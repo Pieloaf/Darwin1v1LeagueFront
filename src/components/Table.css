@@ -1,0 +1,45 @@
+.profile_col {
+	display: flex;
+	align-items: center;
+	align-content: center;
+	height: 100%;
+	margin: auto;
+	font-weight: 600;
+	padding-left: 12%;
+}
+.container_medal {
+    position: relative;
+    text-align: center;
+}
+
+.centered {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+    font-size: 25px;
+    color: white;
+    -webkit-text-stroke: 1px #393939;
+}
+
+.player_avatar {
+    margin: 4px 10px 4px 0;
+    border-radius:30px;
+    width:50px;
+    height:50px;
+}
+
+.elo-col {
+    display: inline-block;
+    font-size: 16px;
+    align-items: center;
+}
+
+.rank-badge {
+    font-size: 18px;
+    border-radius: 2px;
+    box-shadow: #282c34 2px 2px 2px 2px;
+    width: 90px;
+    color: white;
+}

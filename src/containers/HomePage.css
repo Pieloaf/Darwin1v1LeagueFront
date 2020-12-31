@@ -1,0 +1,71 @@
+@font-face{
+    font-family:"Rift";
+        src: url("../data/Fonts/RiftSoft-BoldItalic.ttf") format("truetype");
+}
+
+.main{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.intro-text {
+    font-family: 'Rift', Fallback, sans-serif !important;
+    font-size: 100px;
+    text-shadow: #1e1e20 1px 1px 5px;
+}
+
+.sub-text {
+    font-family: 'Rift', Fallback, sans-serif !important;
+    font-size: 45px;
+}
+
+.discord-btn {
+    font-size: 45px;
+    margin: 15px 0;
+    padding: 0px 35px 3px;
+    border-radius: 50px;
+    border: 2px solid #cc6633;
+    color: #fff;
+    background: #cc6633;  
+    box-shadow: 1px 1px 5px black;
+  }
+.discord-btn:hover {
+    background: #cc6633d3;
+    transition: all ease-in 0.1s;
+    color: #fff
+  }
+.discord-btn:active{
+    transition: all 0.01s;
+    background: #f07c42;   
+}
+
+.socials{
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-items: flex-end;
+  font-family: Rift;
+  position: absolute;
+  bottom: 0px;
+}
+
+.social-links > li{
+  display: inline;
+}
+
+.social-links > li > a{
+  color: #fff;
+  font-size: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.social-links > li > a:hover{
+  color: #cc6633;
+  font-size: 30px;
+}
+
+ul {
+  padding: 0px;
+}

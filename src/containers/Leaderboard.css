@@ -1,0 +1,70 @@
+:root {
+    /* --background:  #343c4b; */
+}
+
+@font-face{
+    font-family:"Rift";
+        src: url("../data/Fonts/RiftSoft-BoldItalic.ttf") format("truetype");
+}
+
+.leaderboard-page {
+    margin-top: 50px !important;
+    position: inherit !important;
+}
+
+.leaderboard-title {
+    margin: auto;
+    height: 20px;
+    font-family: Rift;
+    font-size: 50px;
+    font-weight: 500;
+    background: transparent;
+    color: white;
+    padding: 1rem, 0.5rem;
+}
+
+.leaderboard-container {
+    margin: 0;
+    padding: 0;
+}
+
+.module-border-wrap {
+    margin: auto;
+    position: relative;
+    background-color: var(--background);
+/*    background: linear-gradient(95deg, #45c6f9, #3143a2 75%);*/
+    padding: 3px;
+}
+
+.ReactTable {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/*background: linear-gradient(85deg, #45c6f9, #3143a2 75%);*/
+
+.rt-thead {
+    background-color: var(--background);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.ReactTable .rt-thead.-filters input, .ReactTable .rt-thead.-filters select {
+    color: white;
+    background: #3d3e4b;
+}
+
+.rt-tbody {
+    background: linear-gradient(185deg, #3d3f4b, var(--background) 75%);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
+.pagination-bottom {
+    background: linear-gradient(185deg, #3d3f4b,  var(--background) 75%);
+    color: white;
+    font-weight: 500;
+    font-size: 20px;
+}
