@@ -82,15 +82,16 @@ class LeaderBoardTable extends React.Component {
 
     get_rank_and_color_from_elo(elo) {
         const rolesValues = [
-            ["Legend", 1500, "rgba(219, 0, 102, 1)"],
-            ["Master", 1300, "rgba(190, 0, 255, 0.65)"],
-            ["Diamond", 1150, "rgba(0, 227, 255, 0.75)"],
+            ["Legend", 1500, "rgba(255, 0, 7, 1)"],
+            ["Master", 1300, "rgba(240, 79, 248, 0.65)"],
+            ["Diamond", 1200, "rgba(0, 227, 255, 0.75)"],
+            ["Platinum", 1100, "rgba(18, 116, 54, 1)"],
             ["Gold", 1000, "rgba(242, 167, 37, 1)"],
-            ["Silver", 950, "rgba(189, 189, 189, 0.7)"],
-            ["Bronze", 850, "rgba(178, 99, 38, 1)"],
-            ["Steel", 700, "rgba(178, 99, 38, 1)"],
-            ["Iron", 500, "rgba(178, 99, 38, 1)"],
-            ["Inmate", 0, "rgba(46, 204, 113, 0.9)"]
+            ["Silver", 900, "rgba(219, 218, 218, 0.7)"],
+            ["Bronze", 800, "rgba(128, 65, 18, 1)"],
+            ["Steel", 700, "rgba(160, 160, 160, 1)"],
+            ["Iron", 500, "rgba(104, 104, 104, 1)"],
+            ["Inmate", 0, "rgba(235, 105, 39, 1)"]
         ]
         for (let i = 0; i < rolesValues.length; i++)
             if (elo >= rolesValues[i][1])
@@ -129,7 +130,7 @@ class LeaderBoardTable extends React.Component {
             return <div>{this.buttons()}Seems like server is dead lul</div>
         if (!Leaderboard || !Leaderboard.length)
             return <div>{this.buttons()}Looks like the database has just been cleared</div>
-        const FilteredLeaderboard = Leaderboard.filter(player => (player.victory + player.defeat) > 0)
+        const FilteredLeaderboard = Leaderboard.filter(player => (player.victory + player.defeat) >= 10)
         if (!FilteredLeaderboard || !FilteredLeaderboard.length)
             return <div>{this.buttons()}Looks like the leaderboards have just been reset</div>
         return (
