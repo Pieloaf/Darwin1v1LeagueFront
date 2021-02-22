@@ -17,16 +17,16 @@ class LeaderboardPage extends React.Component {
             this.state = { activeItemPills: '' };
         }
     }
-    togglePills = tab => () => {
+    togglePills = region => () => {
         const { activePills } = this.state;
-        if (activePills !== tab) {
+        if (activePills !== region) {
             this.setState({
-                activeItemPills: tab
+                activeItemPills: region
             });
             if (this.props.platform) {
-                history.push(`/leaderboard/${this.props.platform}/${tab}`)
+                history.push(`/leaderboard/${this.props.platform}/${region}`)
             } else {
-                history.push(`/leaderboard/global/${tab}`)
+                history.push(`/leaderboard/global/${region}`)
             }
         }
     };
