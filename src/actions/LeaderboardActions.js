@@ -1,15 +1,17 @@
 import axios from 'axios'
-import { API_END_POINT } from './api-end-point'
+let API_END_POINT = "https://darwin1v1league.com:100"
 
-export function actionGetLeaderboard(p = "") {
-    const url = `${API_END_POINT}/leaderboard`
+export function actionGetLeaderboard(p, r) {
+    var url = `${API_END_POINT}/leaderboard/`
+    if (r) {
+        url = `${API_END_POINT}/leaderboard/${p}/${r}`
+    }
+    else if (p) {
+        url = `${API_END_POINT}/leaderboard/${p}`
+    }
     return function (dispatch) {
         dispatch({ type: "LEADERBOARD_IS_LOADING", payload: true })
-        axios.get(url, {
-            params: {
-                platform: p
-            }
-        }).then((response) => {
+        axios.get(url).then((response) => {
             if (response && response.data) {
                 dispatch({ type: "LEADERBOARD", payload: response.data })
             } else {
@@ -25,4 +27,3 @@ export function actionGetLeaderboard(p = "") {
         })
     }
 }
-

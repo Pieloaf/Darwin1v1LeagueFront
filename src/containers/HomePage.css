@@ -39,33 +39,3 @@
     transition: all 0.01s;
     background: #f07c42;   
 }
-
-.socials{
-  display: flex;
-  flex-direction: column;
-  justify-self: center;
-  justify-items: flex-end;
-  font-family: Rift;
-  position: absolute;
-  bottom: 0px;
-}
-
-.social-links > li{
-  display: inline;
-}
-
-.social-links > li > a{
-  color: #fff;
-  font-size: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-.social-links > li > a:hover{
-  color: #cc6633;
-  font-size: 30px;
-}
-
-ul {
-  padding: 0px;
-}

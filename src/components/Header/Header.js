@@ -4,9 +4,10 @@ import history from "../../history";
 import './Header.css'
 import {
     MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse,
-    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
-import { BrowserRouter as Router, Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import '../../data/Fonts/boxicons-2.0.7/css/boxicons.css'
 
 class Header extends React.Component {
 
@@ -39,27 +40,45 @@ class Header extends React.Component {
                                         </MDBDropdownToggle>
                                         <MDBDropdownMenu>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/leaderboard',
-                                                platform: 'PC',
+                                                pathname: '/leaderboard/pc'
                                             })}>
-                                                <Link to="/leaderboard">PC</Link></MDBDropdownItem>
+                                                <Link to="/leaderboard/pc">PC</Link></MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/leaderboard',
-                                                platform: 'PS4',
+                                                pathname: '/leaderboard/ps4'
                                             })}>
-                                                <Link to="/leaderboard">PS4</Link></MDBDropdownItem>
+                                                <Link to="/leaderboard/ps4">PS4</Link></MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/leaderboard',
-                                                platform: 'XBOX',
+                                                pathname: '/leaderboard/xbox'
                                             })}>
                                                 <Link to="/leaderboard">Xbox</Link></MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/leaderboard',
-                                                platform: '',
+                                                pathname: '/leaderboard'
                                             })}>
                                                 <Link to="/leaderboard">Global</Link></MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
+                                </MDBNavItem>
+                            </MDBNavbarNav>
+                            <MDBNavbarNav right className="right">
+                                <MDBNavItem className="socials">
+                                    <a href="https://www.youtube.com/watch?v=0tCrpVTmb-M" target="_blank" rel="noopener noreferrer">
+                                        <MDBIcon className="icon" fab icon="youtube" />
+                                    </a>
+                                </MDBNavItem>
+                                <MDBNavItem className="socials">
+                                    <a href="https://www.twitch.tv/darwin1v1league/" target="_blank" rel="noopener noreferrer">
+                                        <MDBIcon className="icon" fab icon="twitch" />
+                                    </a>
+                                </MDBNavItem>
+                                <MDBNavItem className="socials">
+                                    <a href="https://www.instagram.com/darwin1v1league/" target="_blank" rel="noopener noreferrer">
+                                        <MDBIcon className="icon" fab icon="instagram" />
+                                    </a>
+                                </MDBNavItem>
+                                <MDBNavItem className="socials">
+                                    <a href="https://twitter.com/1v1Darwin" target="_blank" rel="noopener noreferrer">
+                                        <MDBIcon className="icon" fab icon="twitter" />
+                                    </a>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                         </MDBCollapse>

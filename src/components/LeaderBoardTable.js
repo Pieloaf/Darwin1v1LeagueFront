@@ -12,14 +12,21 @@ import bronze from '../data/image/medals/3.png'
 import steamLogo from '../data/image/logos/PC.png'
 import XboxLogo from '../data/image/logos/Xbox.png'
 import PS4Logo from '../data/image/logos/PS4.png'
+import { withRouter } from "react-router-dom";
+
 
 class LeaderBoardTable extends React.Component {
 
 
     componentDidMount() {
-        this.props.actionGetLeaderboard(this.props.platform)
+        this.props.actionGetLeaderboard(this.props.platform, this.props.region)
     }
 
+    componentDidUpdate(prevProps) {
+        if (this.props.platform !== prevProps.platform || this.props.region !== prevProps.region) {
+            this.props.actionGetLeaderboard(this.props.platform, this.props.region)
+        }
+    }
     display_medal(player) {
         if (player.ranking > 3)
             return player.ranking
@@ -38,7 +45,6 @@ class LeaderBoardTable extends React.Component {
     }
     get_winrate(player) {
         const winrate = Math.round((player.victory / (player.victory + player.defeat)) * 100, 2)
-        console.log(winrate)
         let color = ''
         if (winrate > 50)
             color = "#45ff51"
@@ -107,35 +113,19 @@ class LeaderBoardTable extends React.Component {
             </div>
         </div>
     }
-    buttons() {
-        let buttonStyles = { backgroundColor: '#cc6633', borderRadius: '50px', margin: '5px', color: '#fff', borderWidth: '0px' }
-        return (
-            <div>
-                <button onClick={() => this.filterTable("PC")} style={buttonStyles}> PC </button>
-                <button onClick={() => this.filterTable("PS4")} style={buttonStyles}> PS4 </button>
-                <button onClick={() => this.filterTable("XBOX")} style={buttonStyles}> XBOX</button>
-                <button onClick={() => this.filterTable("")} style={buttonStyles}> ALL </button>
-            </div>
-        )
-    }
-
-    filterTable = (platform) => {
-        this.props.actionGetLeaderboard(platform)
-    }
     render() {
         const { Leaderboard, LeaderboardIsLoading } = this.props
 
         if (LeaderboardIsLoading) return loaders[Math.floor(Math.random() * loaders.length)]
         if (Leaderboard === -1)
-            return <div>{this.buttons()}Seems like server is dead lul</div>
+            return <div>Seems like server is dead lul</div>
         if (!Leaderboard || !Leaderboard.length)
-            return <div>{this.buttons()}Looks like the database has just been cleared</div>
+            return <div>Looks like the database has just been cleared</div>
         const FilteredLeaderboard = Leaderboard.filter(player => (player.victory + player.defeat) >= 10)
         if (!FilteredLeaderboard || !FilteredLeaderboard.length)
-            return <div>{this.buttons()}Looks like the leaderboards have just been reset</div>
+            return <div>Looks like the leaderboards have just been reset</div>
         return (
             <div>
-                {this.buttons()}
                 <MDBRow style={{ width: '100%' }}>
                     <MDBCol>
                         <SimpleTable
@@ -205,4 +195,4 @@ const mapDispatchToProps = (dispatch) => ({
     }, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LeaderBoardTable);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LeaderBoardTable));

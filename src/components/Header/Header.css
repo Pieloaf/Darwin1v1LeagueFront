@@ -5,3 +5,19 @@
     font-size: 17px;
     /* border-left: rgba(93, 228, 255, 0.75) 1px solid; */
 }
+.socials {
+        margin-left: 10px;
+        height: 100%;
+        font-size: 16px;
+        display: block;
+        padding-right: .2rem;
+        padding-left: .2rem;
+}
+.icon{
+    font-size: 150%;
+    color: white;
+    height: 25px;
+}
+.right{
+    align-items: center;
+}

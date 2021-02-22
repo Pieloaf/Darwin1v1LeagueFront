@@ -12,7 +12,9 @@ class Routes extends Component {
             <Router history={history}>
                 <Switch>
                     <Route path="/home" component={HomePage} />
-                    <Route path="/leaderboard" component={LeaderboardPage} />
+                    <Route path="/leaderboard/:platform/:region" component={(props) => (<LeaderboardPage platform={props.match.params.platform} region={props.match.params.region} />)} />
+                    <Route path="/leaderboard/:platform" component={(props) => (<LeaderboardPage platform={props.match.params.platform} />)} />
+                    <Route path="/leaderboard/" component={LeaderboardPage} />
                     <Route exact path="/" component={HomePage} />
                     <Route path="/*" component={NotFoundPage} />
                 </Switch>

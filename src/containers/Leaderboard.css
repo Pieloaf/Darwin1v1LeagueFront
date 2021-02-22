@@ -1,7 +1,3 @@
-:root {
-    /* --background:  #343c4b; */
-}
-
 @font-face{
     font-family:"Rift";
         src: url("../data/Fonts/RiftSoft-BoldItalic.ttf") format("truetype");
@@ -67,4 +63,7 @@
     color: white;
     font-weight: 500;
     font-size: 20px;
+}
+.nav-pills{
+    justify-content: center;
 }
