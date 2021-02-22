@@ -23,7 +23,11 @@ class LeaderboardPage extends React.Component {
             this.setState({
                 activeItemPills: tab
             });
-            history.push(`/leaderboard/${this.props.platform}/${tab}`)
+            if (this.props.platform) {
+                history.push(`/leaderboard/${this.props.platform}/${tab}`)
+            } else {
+                history.push(`/leaderboard/global/${tab}`)
+            }
         }
     };
     render() {
