@@ -1,17 +1,17 @@
-export function LeaderboardReducer(state = null, action) {
+export function LoggedInReducer(state = null, action) {
 
     switch (action.type) {
-        case 'LEADERBOARD':
+        case 'LOGGED_IN':
             return action.payload;
         default:
             return state
     }
 }
 
-export function LeaderboardIsLoadingReducer(state = null, action) {
+export function LoggingInReducer(state = null, action) {
 
     switch (action.type) {
-        case 'LEADERBOARD_IS_LOADING':
+        case 'LOGGING_IN':
             return action.payload;
         default:
             return state

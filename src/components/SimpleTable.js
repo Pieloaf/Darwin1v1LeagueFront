@@ -66,20 +66,20 @@ class SimpleTable extends Component {
         if (localStorage.getItem("page")) page = localStorage.getItem("page")
 
         return (
-                <ReactTable
-                    className="-striped -highlight"
-                    onSortedChange={this.onChangeSort}
-                    onPageChange={this.onChangePage}
-                    defaultFilterMethod={(filter, row) => filterCaseInsensitive(filter, row)}
-                    sorted={sorted}
-                    page={parseInt(page, 10)}
-                    minRows={1}
-                    multiSort={false}
-                    columns={columns}
-                    noDataText={"Player not in database"}
-                    {...others}
-                    data={data}
-                />
+            <ReactTable
+                className="-striped -highlight"
+                onSortedChange={this.onChangeSort}
+                onPageChange={this.onChangePage}
+                defaultFilterMethod={(filter, row) => filterCaseInsensitive(filter, row)}
+                sorted={sorted}
+                page={parseInt(page, 10)}
+                minRows={1}
+                multiSort={false}
+                columns={columns}
+                noDataText={"Player not in database"}
+                {...others}
+                data={data}
+            />
         );
     }
 
