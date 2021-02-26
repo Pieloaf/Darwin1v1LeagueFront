@@ -2,8 +2,7 @@ import axios from 'axios'
 let API_END_POINT = "https://darwin1v1league.com:100"
 
 export function actionVerifyLogin(code) {
-    var url = `${API_END_POINT}/login?code=${code}`
-    console.log(code)
+    var url = `${API_END_POINT}/login/${code}`
     return function (dispatch) {
         dispatch({ type: "LOGGING_IN", payload: true })
         axios.get(url).then((response) => {
