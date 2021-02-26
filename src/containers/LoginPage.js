@@ -5,6 +5,7 @@ import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 const loginUrl = 'https://discord.com/api/oauth2/authorize?client_id=779767593418227735&redirect_uri=https%3A%2F%2Fdarwin1v1league.com%2Flogin&response_type=code&scope=identify%20guilds&prompt=none'
+const devUrl = 'https://discord.com/api/oauth2/authorize?client_id=779767593418227735&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&response_type=code&scope=guilds%20identify&prompt=none'
 var code
 
 class LoginPage extends Component {
@@ -16,10 +17,11 @@ class LoginPage extends Component {
     getCode() {
         code = new URLSearchParams(this.props.location.search).get('code')
         if (!code) {
-            window.location.replace(loginUrl)
+            window.location.replace(devUrl)
         }
         return code
     }
+
 
     render() {
         const { LoggedIn, LoggingIn } = this.props
@@ -29,9 +31,9 @@ class LoginPage extends Component {
                 {loaders[Math.floor(Math.random() * loaders.length)]}
             </div>
         )
-        if (LoggedIn === -1) return (<h2>ehhh... somethings not right :/</h2>)
-        if (!LoggedIn === -1) return (<h2>{window.location.replace('https://darwin1v1league.com:100/profile')}</h2>)
-        return (<h1>{window.location.replace('https://darwin1v1league.com:100/profile')}</h1>)
+        if (LoggedIn === -1) return (<h2>ehhh... something's not right :/</h2>)
+        if (LoggedIn) return (<h2>{LoggedIn}</h2>)
+        return(<div></div>)
 
     }
 }
