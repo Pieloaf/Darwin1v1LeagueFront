@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { actionVerifyLogin } from '../actions/LoginActions';
+import { actionGetProfile } from '../actions/ProfileActions';
 import { loaders } from '../components/loaders'
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
-import { Redirect } from 'react-router-dom';
 import history from "../history";
 
 const loginUrl = 'https://discord.com/api/oauth2/authorize?client_id=779767593418227735&redirect_uri=https%3A%2F%2Fdarwin1v1league.com%2Flogin&response_type=code&scope=identify%20guilds&prompt=none'
@@ -13,45 +12,36 @@ var code
 class LoginPage extends Component {
 
     componentDidMount() {
-        if (localStorage.getItem('userID')) history.push('/profile')
-        else {
-            this.getCode();
-            if (code !== null) this.props.actionVerifyLogin(code)
-        }
+        if (localStorage.getItem('userID')) this.props.actionGetProfile(localStorage.getItem('userID'))
+        else history.push('/login')
     }
-    getCode() {
-        code = new URLSearchParams(this.props.location.search).get('code')
-        if (!code) {
-            window.location.replace(devUrl)
-        }
-        return code
-    }
-    onLogin(LoggedIn){
-        localStorage.setItem('userID', LoggedIn);
-        return <Redirect to='/profile'/>
+    logout(){
+            localStorage.removeItem('userID')
+            history.push('/home')
     }
 
+
     render() {
-        const { LoggedIn, LoggingIn } = this.props
-        if (LoggingIn) return (
+        const { ProfileLoaded, LoadingProfile } = this.props
+        if (LoadingProfile) return (
             <div>
-                <h1>Beep Boop... Logging In :)</h1>
+                <h1>Beep Boop... Loading Profile :)</h1>
                 {loaders[Math.floor(Math.random() * loaders.length)]}
             </div>
         )
-        if (LoggedIn === -1) return (<h2>ehhh... something's not right :/</h2>)
-        if (LoggedIn) return (<h2>{this.onLogin(LoggedIn)}</h2>)
-        return(<div>LoggedIn</div>)
+        if (ProfileLoaded === -1) return (<h2>ehhh... something's not right :/</h2>)
+        if (ProfileLoaded) return (<div><p>Name: {ProfileLoaded.user_name}<br></br>Elo: {ProfileLoaded.elo}<br></br>Rank: {ProfileLoaded.q_rank}</p><button onClick={this.logout}>Logout</button></div>)
+        return(<div>{ProfileLoaded}</div>)
 
     }
 }
 const mapStateToProps = (state) => {
-    return { LoggedIn: state.LoggedIn, LoggingIn: state.LoggingIn }
+    return { ProfileLoaded: state.ProfileLoaded, LoadingProfile: state.LoadingProfile }
 }
 
 const mapDispatchToProps = (dispatch) => ({
     ...bindActionCreators({
-        actionVerifyLogin
+        actionGetProfile
     }, dispatch)
 })
 
