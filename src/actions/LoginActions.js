@@ -6,8 +6,9 @@ export function actionVerifyLogin(code) {
     return function (dispatch) {
         dispatch({ type: "LOGGING_IN", payload: true })
         axios.get(url).then((response) => {
-            if (response) {
-                dispatch({ type: "LOGGED_IN", payload: true })
+            if (response.data) {
+                console.log(response)
+                dispatch({ type: "LOGGED_IN", payload: response.data })
             } else {
                 dispatch({ type: "LOGGED_IN", payload: null })
             }
@@ -15,8 +16,9 @@ export function actionVerifyLogin(code) {
         }).catch(function (error) {
             if (error) {
                 dispatch({ type: "LOGGED_IN", payload: -1 })
-            } else
+            } else {
                 dispatch({ type: "LOGGED_IN", payload: null })
+            }
             dispatch({ type: "LOGGING_IN", payload: false })
         })
     }
