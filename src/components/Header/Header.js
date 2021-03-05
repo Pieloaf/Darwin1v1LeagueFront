@@ -57,6 +57,25 @@ class Header extends React.Component {
                                                 <Link to="/leaderboard">Global</Link></MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
+                                    <MDBDropdown>
+                                        <MDBDropdownToggle nav caret>
+                                            <span className="mr-2">Patch Notes</span>
+                                        </MDBDropdownToggle>
+                                        <MDBDropdownMenu>
+                                            <MDBDropdownItem onClick={() => history.push({
+                                                pathname: '/patch_notes/1'
+                                            })}>
+                                                <Link to='/patch_notes/1'>Season 1</Link></MDBDropdownItem>
+                                            <MDBDropdownItem onClick={() => history.push({
+                                                pathname: '/patch_notes/season2'
+                                            })}>
+                                                <Link to="/patch_notes/season2">Season 2</Link></MDBDropdownItem>
+                                            <MDBDropdownItem onClick={() => history.push({
+                                                pathname: '/patch_notes/season3'
+                                            })}>
+                                                <Link to="/patch_notes/season3">Season 3</Link></MDBDropdownItem>
+                                        </MDBDropdownMenu>
+                                    </MDBDropdown>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                             <MDBNavbarNav right className="right">

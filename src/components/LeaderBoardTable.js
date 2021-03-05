@@ -96,8 +96,7 @@ class LeaderBoardTable extends React.Component {
             ["Silver", 900, "rgba(219, 218, 218, 0.7)"],
             ["Bronze", 800, "rgba(128, 65, 18, 1)"],
             ["Steel", 700, "rgba(160, 160, 160, 1)"],
-            ["Iron", 500, "rgba(104, 104, 104, 1)"],
-            ["Inmate", 0, "rgba(235, 105, 39, 1)"]
+            ["Inmate", 500, "rgba(235, 105, 39, 1)"]
         ]
         for (let i = 0; i < rolesValues.length; i++)
             if (elo >= rolesValues[i][1])
