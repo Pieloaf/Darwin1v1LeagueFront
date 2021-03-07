@@ -45,7 +45,7 @@ class PatchNotesPage extends Component {
     }
     getDate(json) {
         if (json) {
-            return (<h2 className='sub-text'>{json.Date}</h2>)
+            return (<h2 className='patch-date'>{json.Date}</h2>)
         }
     }
 
@@ -60,7 +60,7 @@ class PatchNotesPage extends Component {
                     <div className="main">
                         <MDBMask className="flex-center flex-column text-white text-center">
                             <div className="patch-notes-card">
-                                <h1 className="intro-text">Patch Notes: {this.props.season.replace('-', ' ')}</h1>
+                                <h1 className="patch-title">Patch Notes: {this.props.season.replace('-', ' ')}</h1>
                                 {this.getDate(Patches)}
                                 <div className='notes'>
                                     {this.displayPatches(Patches)}

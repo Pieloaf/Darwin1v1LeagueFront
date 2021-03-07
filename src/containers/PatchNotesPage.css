@@ -10,13 +10,13 @@
   height: 100%;
 }
 
-.intro-text {
+.patch-title {
     font-family: 'Rift', Fallback, sans-serif !important;
     font-size: 60px;
     text-shadow: 3px 0 0 rgb(0, 0, 0), -3px 0 0 rgb(0, 0, 0), 0 3px 0 rgb(0, 0, 0), 0 -3px 0 rgb(0, 0, 0), 2px 2px rgb(0, 0, 0), -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
   }
 
-.sub-text {
+.patch-date {
   text-shadow: 2px 0 0 #000, -2px 0 0 #000, 0 2px 0 #000, 0 -2px 0 #000, 1px 1px #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000;
 
     font-family: 'Rift', Fallback, sans-serif !important;
