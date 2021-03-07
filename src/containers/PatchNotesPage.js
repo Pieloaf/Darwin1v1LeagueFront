@@ -13,6 +13,11 @@ class PatchNotesPage extends Component {
     componentDidMount() {
         this.props.actionGetPatchNotes(this.props.season)
     }
+    componentDidUpdate(prevProps) {
+        if (this.props.season !== prevProps.season) {
+            this.props.actionGetPatchNotes(this.props.season)
+        }
+    }
     getBg() {
         if (this.props.season === 'season-1') {
             return (season1)
