@@ -1,7 +1,7 @@
 import axios from 'axios'
 let API_END_POINT = "https://darwin1v1league.com:100"
 
-export function actionGetProfile(user_id) {
+export function actionGetProfile(user_id, season) {
     var url = `${API_END_POINT}/user/${user_id}`
     if (season) {
         url = `${API_END_POINT}/user/${user_id}/${season}`

@@ -1,7 +1,7 @@
 import axios from 'axios'
 let API_END_POINT = "https://darwin1v1league.com:100"
 
-export function getPatchNotes(season) {
+export function actionGetPatchNotes(season) {
     var url = `${API_END_POINT}/patches/${season}`
     return function (dispatch) {
         dispatch({ type: "LOADING_PATCHES", payload: true })
@@ -22,4 +22,4 @@ export function getPatchNotes(season) {
     }
 }
 
-export default { actionVerifyLogin }
+export default { actionGetPatchNotes }

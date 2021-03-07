@@ -33,7 +33,7 @@ class Header extends React.Component {
                                 <MDBNavItem className="leaderboard-tab">
                                     <MDBNavLink to="/Home">Home</MDBNavLink>
                                 </MDBNavItem>
-                                <MDBNavItem to="leaderboard" className="leaderboard-tab">
+                                <MDBNavItem className="leaderboard-tab">
                                     <MDBDropdown>
                                         <MDBDropdownToggle nav caret>
                                             <span className="mr-2">Leaderboards</span>
@@ -57,23 +57,25 @@ class Header extends React.Component {
                                                 <Link to="/leaderboard">Global</Link></MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
+                                </MDBNavItem>
+                                <MDBNavItem className="patch-notes-tab">
                                     <MDBDropdown>
                                         <MDBDropdownToggle nav caret>
                                             <span className="mr-2">Patch Notes</span>
                                         </MDBDropdownToggle>
                                         <MDBDropdownMenu>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/patch_notes/1'
+                                                pathname: '/patch-notes/season-1'
                                             })}>
-                                                <Link to='/patch_notes/1'>Season 1</Link></MDBDropdownItem>
+                                                <Link to='/patch-notes/season-1'>Season 1</Link></MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/patch_notes/season2'
+                                                pathname: '/patch-notes/season-2'
                                             })}>
-                                                <Link to="/patch_notes/season2">Season 2</Link></MDBDropdownItem>
+                                                <Link to="/patch-notes/season-2">Season 2</Link></MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
-                                                pathname: '/patch_notes/season3'
+                                                pathname: '/patch-notes/season-3'
                                             })}>
-                                                <Link to="/patch_notes/season3">Season 3</Link></MDBDropdownItem>
+                                                <Link to="/patch-notes/season-3">Season 3</Link></MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
                                 </MDBNavItem>
