@@ -1,44 +1,45 @@
 import React, { Component } from 'react';
-import { actionGetProfile } from '../actions/ProfileActions';
-import { loaders } from '../components/loaders'
-import { bindActionCreators } from "redux";
-import { connect } from "react-redux";
+import { MDBMask, MDBView } from 'mdbreact';
+import Stats from '../components/Stats';
 import history from "../history";
+import season1 from "../data/image/season1.jpg";
+import Header from "../components/Header/Header";
 
-class LoginPage extends Component {
+class ProfilePage extends Component {
 
     componentDidMount() {
-        if (localStorage.getItem('userID')) this.props.actionGetProfile(localStorage.getItem('userID'))
-        else history.push('/login')
+        if (!localStorage.getItem('userID')) history.push('/login')
     }
-    logout(){
-            localStorage.removeItem('userID')
-            history.push('/home')
+    logout() {
+        localStorage.removeItem('userID')
+        history.push('/home')
     }
 
 
     render() {
-        const { ProfileLoaded, LoadingProfile } = this.props
-        if (LoadingProfile) return (
+        return (
             <div>
-                <h1>Beep Boop... Loading Profile :)</h1>
-                {loaders[Math.floor(Math.random() * loaders.length)]}
+                <Header />
+                <MDBView src={season1}>
+                    <div className="main">
+                        <MDBMask className="flex-center flex-column text-white text-center">
+                            <Stats />
+                        </MDBMask>
+                    </div>
+                </MDBView>
             </div>
-        )
-        if (ProfileLoaded === -1) return (<h2>ehhh... something's not right :/</h2>)
-        if (ProfileLoaded) return (<div><p>Name: {ProfileLoaded.user_name}<br></br>Elo: {ProfileLoaded.elo}<br></br>Rank: {ProfileLoaded.q_rank}</p><button onClick={this.logout}>Logout</button></div>)
-        return(<div>{ProfileLoaded}</div>)
-
+        );
     }
-}
-const mapStateToProps = (state) => {
-    return { ProfileLoaded: state.ProfileLoaded, LoadingProfile: state.LoadingProfile }
-}
 
-const mapDispatchToProps = (dispatch) => ({
-    ...bindActionCreators({
-        actionGetProfile
-    }, dispatch)
-})
+}
+// const mapStateToProps = (state) => {
+//     return { ProfileLoaded: state.ProfileLoaded, LoadingProfile: state.LoadingProfile }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+// const mapDispatchToProps = (dispatch) => ({
+//     ...bindActionCreators({
+//         actionGetProfile
+//     }, dispatch)
+// })
+
+export default (ProfilePage);
