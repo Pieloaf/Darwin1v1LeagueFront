@@ -7,6 +7,12 @@
 	font-weight: 600;
 	padding-left: 12%;
 }
+.profile_col > a{
+    color: white;   
+}
+.profile_col > a:hover{
+    color: rgba(255, 255, 255, 0.527);
+}
 .container_medal {
     position: relative;
     text-align: center;

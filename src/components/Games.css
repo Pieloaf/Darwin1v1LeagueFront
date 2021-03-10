@@ -1,0 +1,78 @@
+.games-container{
+    width: 40%; 
+    min-width: 420px;
+    display: flex;
+    font-family: 'Rift';
+    background-color: #141b3bea;
+    border-radius: 7px;
+    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%);
+    flex-direction: column;
+    height: 582px;
+    padding-bottom: 5px;
+    /* overflow-x: scroll; */
+}
+.games-title{
+    font-size: 24px;
+    font-family: 'Rift';
+    padding: 0px 10px;
+    width: 100%;
+    background-image:linear-gradient( to right , #FF870D, #FFBC00);
+    border-radius: 7px 7px 0px 0px;
+    align-items: flex-start;
+    display: flex;
+}
+.games{
+    /* height: 100%; */
+    overflow: hidden;
+    min-width: 500px;
+}
+
+.col-titles{
+    font-size: 32px;
+    width: 100%;
+    min-width: 500px;
+    display: flex;
+    padding: 0px 7px;
+    justify-content: space-around;
+}
+
+.game-rows{
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 7px;
+}
+.game-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 24px;
+    border-radius: 7px;
+    margin-bottom: 5px;
+}
+.id-col{
+    width: 50%;
+}
+.elo-change-col{
+    width:50%;
+}
+.opponent-col{
+    width:100%;
+}
+.date-col{
+    width:90%;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+@media only screen 
+  and (max-device-width: 800px)  { 
+      .games-container{
+          min-width: 360px
+      }
+      .test, .col-titles{
+          min-width: 500px;
+      }
+  }

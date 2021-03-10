@@ -1,13 +1,19 @@
+
 .profile-card{
     display: flex;
     flex-direction: row;
+}
+.avatar-container{
+    display: flex;
+    align-items: center;
 }
 .profile-avatar {
     margin-right: 15px;
     border-radius:5px;
     width:150px;
     height:150px;
-    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%)
+    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%);
+
 }
 .basic-info{
     display: flex;
@@ -22,12 +28,13 @@
     font-family: 'Rift';
     font-size: 26px;
     width: 100%;    
+    /* background-image:linear-gradient( to right , #FF870D, #FFBC00); */
     background-image:linear-gradient( to right , #0E173D, #0A4777);
     text-align: left;
     padding-left: 10px;
     border-radius: 7px 7px 0px 0px;
 }
-.beep-boop{
+.lower-half{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -53,6 +60,8 @@
     display: flex;
     flex-direction: row;
     align-self: center;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .region-container, .platform-container{
     display: flex;
@@ -67,12 +76,11 @@
 }
 .ukelele{
     margin-top: 15px;
-    width: 100%;
+    width: 460px;
     display: flex;
     font-family: 'Rift';
     align-items: flex-start;
     flex-direction: column;
-    /* height: 100%; */
     background-color: #141b3bb0;
     border-radius: 7px;
     box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%);
@@ -81,6 +89,7 @@
     font-size: 24px;
     padding: 0px 10px;
     width: 100%;
+    /* background-image:linear-gradient( to right , #0E173D, #0A4777); */
     background-image:linear-gradient( to right , #FF870D, #FFBC00);
     border-radius: 7px 7px 0px 0px;
     align-items: flex-start;
@@ -89,10 +98,9 @@
 .stats{
     padding: 10px 0px;
     display: flex;
-    width: 460px;
+    width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    /* height: 100%; */
 }
 .stat{    
     display: flex;
@@ -102,6 +110,7 @@
     margin-bottom: 7px;
     padding-top: 4px;
     background-color: #263e5652;
+    border-radius: 7px;
 }
 .stat-name{
     font-size: 16px;
@@ -109,3 +118,28 @@
 .stat-value{
     font-size: 28px;
 }
+.classes{
+    border-radius: 7px;
+    display: flex;
+    width: 80%;
+    margin: 0px 5px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-top: 15px;
+    justify-content: space-evenly;
+    background-color: #263e5652;
+}
+.class-title{
+    font-size: 24px;
+    width: 100%;
+}
+
+@media only screen 
+  and (max-device-width: 812px)  { 
+    .ukelele{
+        width: 360px;
+    }
+    .basic-info{
+        width: 190px;
+    }
+  }

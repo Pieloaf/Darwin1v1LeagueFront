@@ -16,7 +16,8 @@ class Routes extends Component {
                 <Switch>
                     <Route path="/home" component={HomePage} />
                     <Route path="/login" component={LoginPage} />
-                    <Route path="/profile" component={ProfilePage} />
+                    <Route path="/profile/:user_id" component={(props) => (<ProfilePage user_id={props.match.params.user_id} />)} />
+                    <Route path="/profile" component={() => (<ProfilePage user_id={null} />)} />
                     <Route path="/patch-notes/:season" component={(props) => (<PatchNotesPage season={props.match.params.season} />)} />
                     <Route path="/leaderboard/:platform/:region" component={(props) => (<LeaderboardPage platform={props.match.params.platform} region={props.match.params.region} />)} />
                     <Route path="/leaderboard/:platform" component={(props) => (<LeaderboardPage platform={props.match.params.platform} />)} />

@@ -40,7 +40,7 @@ class LeaderBoardTable extends React.Component {
     display_avatar(player) {
         return <span className="profile_col">
             <img className="player_avatar" src={player.avatar_url} alt="avatar" />
-            {player.user_name}
+            <a href={'/profile/' + player.user_id}>{player.user_name}</a>
         </span>
     }
     get_winrate(player) {
@@ -179,7 +179,9 @@ class LeaderBoardTable extends React.Component {
                             showPagination={false}
                         />
                     </MDBCol>
-                </MDBRow></div >);
+                </MDBRow>
+            </div >
+        );
     }
 }
 

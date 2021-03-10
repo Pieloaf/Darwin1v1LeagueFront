@@ -12,7 +12,6 @@ const discord_link = "https://discord.gg/DBxYx7PwkS"
 class HomePage extends Component {
 
     render() {
-        console.log(localStorage)
         return (
             <div>
                 <Header />

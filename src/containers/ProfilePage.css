@@ -1,0 +1,22 @@
+.profile-page-main{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.profile-game-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+  height: fit-content;
+  padding-top: 66px;
+  overflow: scroll;
+}
+.profile-game-container > *{
+  margin: 20px 15px;
+}

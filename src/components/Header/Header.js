@@ -19,6 +19,29 @@ class Header extends React.Component {
         this.setState({ isOpen: !this.state.isOpen });
     }
 
+    userStatus() {
+        if (localStorage.getItem('userID')) {
+            return (<MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                    <span className="mr-2">My Profile</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                    <MDBDropdownItem onClick={() => history.push({
+                        pathname: '/profile'
+                    })}>
+                        <Link to='/profile'>My Profile</Link></MDBDropdownItem>
+                    <MDBDropdownItem onClick={() => {
+                        localStorage.removeItem('userID')
+                        history.push('/home')
+                    }}>
+                        <Link to="/home">Logout</Link></MDBDropdownItem>
+                </MDBDropdownMenu>
+            </MDBDropdown>)
+        }
+        return (
+            <MDBNavLink to="/login">Login</MDBNavLink>)
+    }
+
     render() {
         return (
             <div>
@@ -57,6 +80,9 @@ class Header extends React.Component {
                                                 <Link to="/leaderboard">Global</Link></MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
+                                </MDBNavItem>
+                                <MDBNavItem className="profile-tab">
+                                    {this.userStatus()}
                                 </MDBNavItem>
                                 <MDBNavItem className="patch-notes-tab">
                                     <MDBDropdown>

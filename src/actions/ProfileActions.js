@@ -10,8 +10,7 @@ export function actionGetProfile(user_id, season) {
         dispatch({ type: "LOADING_PROFILE", payload: true })
         axios.get(url).then((response) => {
             if (response.data) {
-                console.log(response.data[0].user_name)
-                dispatch({ type: "PROFILE_LOADED", payload: response.data[0] })
+                dispatch({ type: "PROFILE_LOADED", payload: response.data })
             } else {
                 dispatch({ type: "PROFILE_LOADED", payload: null })
             }
@@ -33,22 +32,21 @@ export function actionGetGames(user_id, season) {
         url = `${API_END_POINT}/games/${user_id}/${season}`
     }
     return function (dispatch) {
-        dispatch({ type: "LOADING_PROFILE", payload: true })
+        dispatch({ type: "LOADING_GAMES", payload: true })
         axios.get(url).then((response) => {
             if (response.data) {
-                console.log(response)
-                dispatch({ type: "PROFILE_LOADED", payload: response.data })
+                dispatch({ type: "GAMES_LOADED", payload: response.data })
             } else {
-                dispatch({ type: "PROFILE_LOADED", payload: null })
+                dispatch({ type: "GAMES_LOADED", payload: null })
             }
-            dispatch({ type: "LOADING_PROFILE", payload: false })
+            dispatch({ type: "LOADING_GAMES", payload: false })
         }).catch(function (error) {
             if (error) {
-                dispatch({ type: "PROFILE_LOADED", payload: -1 })
+                dispatch({ type: "GAMES_LOADED", payload: -1 })
             } else {
-                dispatch({ type: "PROFILE_LOADED", payload: null })
+                dispatch({ type: "GAMES_LOADED", payload: null })
             }
-            dispatch({ type: "LOADING_PROFILE", payload: false })
+            dispatch({ type: "LOADING_GAMES", payload: false })
         })
     }
 }

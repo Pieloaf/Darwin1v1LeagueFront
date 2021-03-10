@@ -16,6 +16,12 @@ import defeats from '../data/image/stats/defeats.png'
 import streak from '../data/image/stats/currentstreak.png'
 import max_streak from '../data/image/stats/maxstreak.png'
 import total_games from '../data/image/stats/totalgames.png'
+import jetwings from '../data/image/stats/jetwings.png'
+import nojetwings from '../data/image/stats/nojetwings.png'
+import headhunter from '../data/image/stats/headhunter.png'
+import noheadhunter from '../data/image/stats/noheadhunter.png'
+import grapple from '../data/image/stats/grapple.png'
+import nograpple from '../data/image/stats/nograpple.png'
 
 import { withRouter } from "react-router-dom";
 
@@ -24,7 +30,12 @@ class Stats extends React.Component {
 
 
     componentDidMount() {
-        if (localStorage.getItem('userID')) this.props.actionGetProfile(localStorage.getItem('userID'))
+        this.props.actionGetProfile(this.props.user_id)
+    }
+    componentDidUpdate(prevProps) {
+        if (this.props.user_id !== prevProps.user_id) {
+            this.props.actionGetProfile(this.props.user_id)
+        }
     }
 
     display_avatar(player) {
@@ -71,23 +82,55 @@ class Stats extends React.Component {
 
     display_elo(player) {
         const rank = this.get_rank_and_color_from_elo(player.elo)
+        if (player.victory + player.defeat >= 10){
         return <div className="elo-rank">
                 <div className={"profile-rank-badge " + rank[0]} style={{ backgroundColor: rank[2] }}>
                     {rank[0]}
                 </div>
                 <h2 style={{ fontFamily: 'Rift', padding: '0px 10px', marginTop:'5px' }}>{player.elo}</h2>
+            </div>}
+        else {
+            return <div className="elo-rank">
+                <div className={"profile-rank-badge"} style={{ backgroundColor: '#777777' }}>
+                    Unranked
+                </div>
             </div>
+        }
     }
 
+    get_rank_text(player, rank){
+        if (player.victory + player.defeat >= 10){
+            return (rank)
+        }
+        else{
+            return('N/A')
+        }
+    }
 
-    display_stat(stuff){
-        console.log(stuff)
+    display_stat(stat){
         return (
         <span className='stat'>
-            <img width='35px' height='35px' src={stuff.image} alt={stuff.text}/>
-            <span className='stat-name'>{stuff.text}</span>
-            <span className='stat-value'>{stuff.value}</span>
+            <img width='40px' height='40px' src={stat.image} alt={stat.text}/>
+            <span className='stat-name'>{stat.text}</span>
+            <span className='stat-value'>{stat.value}</span>
         </span>)
+    }
+
+    display_classes(player){
+        let g = nograpple 
+        let h = noheadhunter
+        let j = nojetwings
+        if (player.player_classes.includes('grapple')) g = grapple
+        if (player.player_classes.includes('headhunter')) h = headhunter
+        if (player.player_classes.includes('jetwings')) j = jetwings
+        return(
+            <span className='classes'>
+                <img className="class" width='80px' height='80px' src={j} alt='grapple'/>
+                <img className="class" width='80px' height='80px' src={g} alt='headhunter'/>
+                <img className="class" width='80px' height='80px' src={h} alt='jetwings'/>
+                <span className='class-title'>Classes</span>
+            </span>
+        )
     }
     render() {
         const {ProfileLoaded, LoadingProfile} = this.props
@@ -102,32 +145,29 @@ class Stats extends React.Component {
         return(
             <div className="profile">
                 <div className="profile-card">
-                    {this.display_avatar(ProfileLoaded)}
+                    {this.display_avatar(ProfileLoaded[0])}
                     <div className="basic-info">
-                        {this.display_username(ProfileLoaded)}
-                        <div className="beep-boop">
-                            {this.display_elo(ProfileLoaded)}
+                        {this.display_username(ProfileLoaded[0])}
+                        <div className="lower-half">
+                            {this.display_elo(ProfileLoaded[0])}
                             <div className="platform-region-container">
-                                {this.display_platform(ProfileLoaded)}{this.display_region(ProfileLoaded)}
+                                {this.display_platform(ProfileLoaded[0])}{this.display_region(ProfileLoaded[0])}
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="ukelele">
-                    <div className='raid-shadow-legends'>Stats</div>
+                    <span className='raid-shadow-legends'>Stats</span>
                     <div className='stats'>
-                        {this.display_stat({'value':ProfileLoaded.victory, 'text':'Victories', 'image':victories})}
-                        {this.display_stat({'value':ProfileLoaded.defeat, 'text':'Defeats', 'image':defeats})}
-                        {this.display_stat({'value':ProfileLoaded.victory+ProfileLoaded.defeat, 'text':'Total Games', 'image':total_games})}
-                        {this.display_stat({'value':Math.round((ProfileLoaded.victory / (ProfileLoaded.victory + ProfileLoaded.defeat)) * 100, 2)+'%', 'text':'Win Rate', 'image':rank})}
-                        {this.display_stat({'value':ProfileLoaded.q_rank, 'text':'Qualifying Rank', 'image':rank})}
-                        {this.display_stat({'value':ProfileLoaded.g_rank, 'text':'Global Rank', 'image':rank})}
-                        {this.display_stat({'value':ProfileLoaded.streak, 'text':'Streak', 'image':streak})}
-                        {this.display_stat({'value':ProfileLoaded.max_streak, 'text':'Max Streak', 'image':max_streak})}
-                        {this.display_stat({'value':ProfileLoaded.max_streak, 'text':'Max Streak', 'image':max_streak})}
-                        {this.display_stat({'value':ProfileLoaded.max_streak, 'text':'Max Streak', 'image':max_streak})}
-                        {this.display_stat({'value':ProfileLoaded.max_streak, 'text':'Max Streak', 'image':max_streak})}
-                        {this.display_stat({'value':ProfileLoaded.max_streak, 'text':'Max Streak', 'image':max_streak})}
+                        {this.display_stat({'value':ProfileLoaded[0].victory, 'text':'Victories', 'image':victories})}
+                        {this.display_stat({'value':ProfileLoaded[0].defeat, 'text':'Defeats', 'image':defeats})}
+                        {this.display_stat({'value':ProfileLoaded[0].victory+ProfileLoaded[0].defeat, 'text':'Total Games', 'image':total_games})}
+                        {this.display_stat({'value':Math.round((ProfileLoaded[0].victory / (ProfileLoaded[0].victory + ProfileLoaded[0].defeat)) * 100, 2)+'%', 'text':'Win Rate', 'image':rank})}
+                        {this.display_stat({'value':this.get_rank_text(ProfileLoaded[0], ProfileLoaded[0].q_rank), 'text':'Qualifying Rank', 'image':rank})}
+                        {this.display_stat({'value':this.get_rank_text(ProfileLoaded[0], ProfileLoaded[0].g_rank), 'text':'Global Rank', 'image':rank})}
+                        {this.display_stat({'value':ProfileLoaded[0].streak, 'text':'Streak', 'image':streak})}
+                        {this.display_stat({'value':ProfileLoaded[0].max_streak, 'text':'Max Streak', 'image':max_streak})}  
+                        {this.display_classes(ProfileLoaded[1])}                 
                     </div>
                 </div>
             </div>)
