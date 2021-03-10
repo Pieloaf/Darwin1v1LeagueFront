@@ -85,7 +85,7 @@
     border-radius: 7px;
     box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%);
 }
-.raid-shadow-legends{
+.stats-title{
     font-size: 24px;
     padding: 0px 10px;
     width: 100%;
@@ -134,12 +134,32 @@
     width: 100%;
 }
 
+.join-up{
+    display: flex;
+    flex-direction: column;
+}
+.join-up > a{
+    color: white;
+    font-family: 'Rift';
+    font-size: 24px;
+}
+
+.join-up > a:hover{
+    color: rgb(129, 198, 255);
+    font-family: 'Rift';
+    font-size: 24px;
+}
+
 @media only screen 
-  and (max-device-width: 812px)  { 
+  and (max-device-width: 500px)  { 
     .ukelele{
-        width: 360px;
+        width: 100%;
     }
     .basic-info{
-        width: 190px;
+        width: 100%;
+    }
+    .profile-avatar{
+        width: 100px;
+        height: 100px;
     }
   }

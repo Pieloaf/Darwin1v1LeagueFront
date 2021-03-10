@@ -41,7 +41,7 @@ class LoginPage extends Component {
         )
         if (LoggedIn === -1) return (<h2>ehhh... something's not right :/</h2>)
         if (LoggedIn) return (<h2>{this.onLogin(LoggedIn)}</h2>)
-        return(<div>LoggedIn</div>)
+        return(<div></div>)
 
     }
 }

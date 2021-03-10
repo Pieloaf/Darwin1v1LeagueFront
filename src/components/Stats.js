@@ -132,6 +132,14 @@ class Stats extends React.Component {
             </span>
         )
     }
+    userNotFound(){
+        if (this.props.user_id == localStorage.getItem('userID')){
+            return (<div className="join-up">
+                <span style={{fontFamily:'Rift', fontSize:'32px'}}>Looks like you're not yet in the league.</span>
+                <a href="https://discord.gg/DBxYx7PwkS" target="_blank" rel="noopener noreferrer">Click here to join</a>
+                 </div>)}
+        return <span style={{fontFamily:'Rift', fontSize:'32px'}}>User Not Found</span>
+    }
     render() {
         const {ProfileLoaded, LoadingProfile} = this.props
         if (LoadingProfile) return (
@@ -141,7 +149,8 @@ class Stats extends React.Component {
             </div>
         )
         if (ProfileLoaded === -1) return (<h2>ehhh... something's not right :/</h2>)
-        if (ProfileLoaded)
+        if (ProfileLoaded && ProfileLoaded.length <= 1) return (<div>{this.userNotFound()}</div>)
+        if (ProfileLoaded && ProfileLoaded.length > 1)
         return(
             <div className="profile">
                 <div className="profile-card">
@@ -157,7 +166,7 @@ class Stats extends React.Component {
                     </div>
                 </div>
                 <div className="ukelele">
-                    <span className='raid-shadow-legends'>Stats</span>
+                    <span className='stats-title'>Stats</span>
                     <div className='stats'>
                         {this.display_stat({'value':ProfileLoaded[0].victory, 'text':'Victories', 'image':victories})}
                         {this.display_stat({'value':ProfileLoaded[0].defeat, 'text':'Defeats', 'image':defeats})}

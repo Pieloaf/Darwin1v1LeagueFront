@@ -64,20 +64,20 @@ class Games extends React.Component {
             </div>
         )
         if (GamesLoaded === -1) return (<h2>ehhh... something's not right :/</h2>)
+        if (GamesLoaded == 0) return (<div></div>)
         if (GamesLoaded)
         return(
             <div className="games-container">
                 <span className="games-title">Match History</span>
-                <div className="games">
                     <div className="col-titles">
                         <span className="id-col">game</span>
                         <span className="elo-change-col">Elo</span>
                         <span className="opponent-col">Opponent</span>
                         <span className="date-col">Date</span>
                     </div>
-
-                    <div className='game-rows'>
-                        {this.display_row(GamesLoaded)}
+                    <div className="games">
+                        <div className='game-rows'>
+                            {this.display_row(GamesLoaded)}
                     </div>
                 </div>
             </div>)

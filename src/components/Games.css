@@ -1,6 +1,6 @@
 .games-container{
     width: 40%; 
-    min-width: 420px;
+    min-width: 450px;
     display: flex;
     font-family: 'Rift';
     background-color: #141b3bea;
@@ -9,7 +9,6 @@
     flex-direction: column;
     height: 582px;
     padding-bottom: 5px;
-    /* overflow-x: scroll; */
 }
 .games-title{
     font-size: 24px;
@@ -22,18 +21,21 @@
     display: flex;
 }
 .games{
-    /* height: 100%; */
-    overflow: hidden;
-    min-width: 500px;
+    width: 100%;
+    overflow-x: scroll;
+    padding-bottom: 5px;
+}
+.rows-container{
+    overflow-y: scroll;
 }
 
 .col-titles{
     font-size: 32px;
     width: 100%;
-    min-width: 500px;
     display: flex;
-    padding: 0px 7px;
+    padding: 0px 9px;
     justify-content: space-around;
+    overflow: visible;
 }
 
 .game-rows{
@@ -49,9 +51,10 @@
     font-size: 24px;
     border-radius: 7px;
     margin-bottom: 5px;
+    align-items: center;
 }
 .id-col{
-    width: 50%;
+    width: 55%;
 }
 .elo-change-col{
     width:50%;
@@ -60,7 +63,8 @@
     width:100%;
 }
 .date-col{
-    width:90%;
+    padding: 0px 6px;
+    width:87%;
 }
 ::-webkit-scrollbar {
     display: none;
@@ -68,11 +72,18 @@
 
 
 @media only screen 
-  and (max-device-width: 800px)  { 
+  and (max-device-width: 500px)  { 
       .games-container{
-          min-width: 360px
+          min-width: 95%;
+          margin: 0px 20px;
       }
-      .test, .col-titles{
-          min-width: 500px;
+      .game-row{
+          font-size: 1.3rem;
+      }
+      .col-titles{
+          font-size: 1.5rem;
+      }
+      .opponent-col{
+          overflow: scroll;
       }
   }
