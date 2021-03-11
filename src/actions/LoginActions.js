@@ -1,5 +1,5 @@
 import axios from 'axios'
-let API_END_POINT = "https://darwin1v1league.com:100"
+let API_END_POINT = "https://api.darwin1v1league.com"
 
 export function actionVerifyLogin(code) {
     var url = `${API_END_POINT}/login/${code}`

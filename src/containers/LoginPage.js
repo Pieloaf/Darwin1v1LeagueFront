@@ -27,7 +27,6 @@ class LoginPage extends Component {
         return code
     }
     onLogin(LoggedIn){
-        localStorage.setItem('userID', LoggedIn);
         return <Redirect to='/profile'/>
     }
 
@@ -40,7 +39,7 @@ class LoginPage extends Component {
             </div>
         )
         if (LoggedIn === -1) return (<h2>ehhh... something's not right :/</h2>)
-        if (LoggedIn) return (<h2>{this.onLogin(LoggedIn)}</h2>)
+        if (LoggedIn) return (<Redirect to='/profile'/>)
         return(<div></div>)
 
     }
