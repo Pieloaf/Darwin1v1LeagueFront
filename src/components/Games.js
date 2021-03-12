@@ -12,24 +12,20 @@ class Games extends React.Component {
     componentDidMount() {
         this.props.actionGetGames(this.props.user_id)
     }
-    componentDidUpdate(prevProps) {
-        if (this.props.user_id !== prevProps.user_id) {
-            this.props.actionGetGames(this.props.user_id)
-        }
-    }
-    get_opponent(game){
-        if (this.props.user_id === game.winner_id){
+
+    get_opponent(game, user_id){
+        if (user_id == game.winner_id){
             return (game.loser)}
         return (game.winner)
     }
-    get_elo_change(game){
+    get_elo_change(game, user_id){
         if (game.num_row <= 10) return 'N/A'
-        if (this.props.user_id === game.winner_id){
+        if (user_id == game.winner_id){
             return ('+'+game.elo_gain)}
         return ('-'+game.elo_loss)
     }
-    get_bg_colour(game){
-        if (this.props.user_id === game.winner_id){
+    get_bg_colour(game, user_id){
+        if (user_id == game.winner_id){
             return '#46ab46a1'
         }
         return '#ab3636e6'
@@ -38,11 +34,13 @@ class Games extends React.Component {
     display_row(games){
         let rows = []
         let row
+        let user = games[games.length-1]
+        games.pop() 
         games.forEach( game =>{
             row = []
             row.push(<span className='id-col'>{game.num_row}</span>)
-            row.push(<span className='elo-change-col'>{this.get_elo_change(game)}</span>)
-            row.push(<span className='opponent-col'>{this.get_opponent(game)}</span>)
+            row.push(<span className='elo-change-col'>{this.get_elo_change(game, user.user_id)}</span>)
+            row.push(<span className='opponent-col'>{this.get_opponent(game, user.user_id)}</span>)
             row.push(<span className='date-col'>{new Intl.DateTimeFormat("en-GB", {
                 year: "numeric",
                 month: "numeric",
@@ -50,7 +48,7 @@ class Games extends React.Component {
                 hour:"numeric",
                 minute:"numeric"
               }).format(new Date(game.timestamp))}</span>)
-            rows.push(<span style={{backgroundColor: this.get_bg_colour(game)}} className='game-row'>{row}</span>)}
+            rows.push(<span style={{backgroundColor: this.get_bg_colour(game, user.user_id)}} className='game-row'>{row}</span>)}
         )
         return(rows)
     }
@@ -64,8 +62,8 @@ class Games extends React.Component {
             </div>
         )
         if (GamesLoaded === -1) return (<h2>ehhh... something's not right :/</h2>)
-        if (GamesLoaded == 0) return (<div></div>)
-        if (GamesLoaded)
+        if (GamesLoaded && GamesLoaded.length <= 1) return (<div></div>)
+        if (GamesLoaded && GamesLoaded.length > 1)
         return(
             <div className="games-container">
                 <span className="games-title">Match History</span>

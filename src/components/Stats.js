@@ -111,7 +111,7 @@ class Stats extends React.Component {
     display_stat(stat){
         return (
         <span className='stat'>
-            <img width='40px' height='40px' src={stat.image} alt={stat.text}/>
+            <img width='35px' height='35px' src={stat.image} alt={stat.text}/>
             <span className='stat-name'>{stat.text}</span>
             <span className='stat-value'>{stat.value}</span>
         </span>)
@@ -133,8 +133,13 @@ class Stats extends React.Component {
             </span>
         )
     }
+    getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
     userNotFound(){
-        if (this.props.user_id == localStorage.getItem('userID')){
+        if (this.getCookie('1v1league-sid') && !this.props.user_id){
             return (<div className="join-up">
                 <span style={{fontFamily:'Rift', fontSize:'32px'}}>Looks like you're not yet in the league.</span>
                 <a href="https://discord.gg/DBxYx7PwkS" target="_blank" rel="noopener noreferrer">Click here to join</a>
