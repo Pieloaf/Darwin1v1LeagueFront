@@ -15,8 +15,8 @@ class Games extends React.Component {
 
     get_opponent(game, user_id){
         if (user_id == game.winner_id){
-            return (game.loser)}
-        return (game.winner)
+            return (<a href={'/profile/' + game.loser_id}>{game.loser}</a>)}
+        return (<a href={'/profile/' + game.winner_id}>{game.winner}</a>)
     }
     get_elo_change(game, user_id){
         if (game.num_row <= 10) return 'N/A'

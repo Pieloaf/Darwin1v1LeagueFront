@@ -62,6 +62,12 @@
 .opponent-col{
     width:100%;
 }
+.opponent-col > a{
+    color: white; 
+}
+.opponent-col > a:hover{
+    color: #d2d2d2
+}
 .date-col{
     padding: 0px 6px;
     width:87%;

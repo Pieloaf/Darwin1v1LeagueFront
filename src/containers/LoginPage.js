@@ -13,7 +13,7 @@ var code
 class LoginPage extends Component {
 
     componentDidMount() {
-        if (this.getCookie('1v1league.sid')) history.push('/profile')
+        if (this.getCookie('1v1league-sid')) history.push('/profile')
         else {
             this.getCode();
             if (code !== null) this.props.actionVerifyLogin(code)
