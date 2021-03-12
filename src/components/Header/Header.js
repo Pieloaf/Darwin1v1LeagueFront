@@ -18,28 +18,35 @@ class Header extends React.Component {
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
+    getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
 
     userStatus() {
-        if (localStorage.getItem('userID')) {
-            return (<MDBDropdown>
-                <MDBDropdownToggle nav caret>
-                    <span className="mr-2">My Profile</span>
-                </MDBDropdownToggle>
+        if (this.getCookie('1v1league-sid')) {
+            return (
                 <MDBDropdownMenu>
                     <MDBDropdownItem onClick={() => history.push({
                         pathname: '/profile'
                     })}>
                         <Link to='/profile'>My Profile</Link></MDBDropdownItem>
                     <MDBDropdownItem onClick={() => {
-                        localStorage.removeItem('userID')
-                        history.push('/home')
+                        document.cookie = '1v1league-sid=; Max-Age=-99999999;';
+                        window.location.href = "https://darwin1v1league.com"
                     }}>
                         <Link to="/home">Logout</Link></MDBDropdownItem>
                 </MDBDropdownMenu>
-            </MDBDropdown>)
+            )
         }
         return (
-            <MDBNavLink to="/login">Login</MDBNavLink>)
+            <MDBDropdownMenu>
+                <MDBDropdownItem onClick={() => history.push({
+                    pathname: '/login'
+                })}>
+                    <Link to='/login'>Login</Link></MDBDropdownItem>
+            </MDBDropdownMenu>)
     }
 
     render() {
@@ -82,7 +89,12 @@ class Header extends React.Component {
                                     </MDBDropdown>
                                 </MDBNavItem>
                                 <MDBNavItem className="profile-tab">
-                                    {this.userStatus()}
+                                    <MDBDropdown>
+                                        <MDBDropdownToggle nav caret>
+                                            <span className="mr-2">Profile</span>
+                                        </MDBDropdownToggle>
+                                        {this.userStatus()}
+                                    </MDBDropdown>
                                 </MDBNavItem>
                                 <MDBNavItem className="patch-notes-tab">
                                     <MDBDropdown>

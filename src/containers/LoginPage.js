@@ -6,14 +6,14 @@ import { connect } from "react-redux";
 import { Redirect } from 'react-router-dom';
 import history from "../history";
 
-// const loginUrl = 'https://discord.com/api/oauth2/authorize?client_id=779767593418227735&redirect_uri=https%3A%2F%2Fdarwin1v1league.com%2Flogin&response_type=code&scope=identify%20guilds&prompt=none'
+const loginUrl = 'https://discord.com/api/oauth2/authorize?client_id=779767593418227735&redirect_uri=https%3A%2F%2Fdarwin1v1league.com%2Flogin&response_type=code&scope=identify%20guilds&prompt=none'
 const devUrl = 'https://discord.com/api/oauth2/authorize?client_id=779767593418227735&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Flogin&response_type=code&scope=guilds%20identify&prompt=none'
 var code
 
 class LoginPage extends Component {
 
     componentDidMount() {
-        if (localStorage.getItem('userID')) history.push('/profile')
+        if (this.getCookie('1v1league.sid')) history.push('/profile')
         else {
             this.getCode();
             if (code !== null) this.props.actionVerifyLogin(code)
@@ -22,13 +22,16 @@ class LoginPage extends Component {
     getCode() {
         code = new URLSearchParams(this.props.location.search).get('code')
         if (!code) {
-            window.location.replace(devUrl)
+            window.location.replace(loginUrl)
         }
         return code
     }
-    onLogin(LoggedIn){
-        return <Redirect to='/profile'/>
-    }
+
+    getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+      }
 
     render() {
         const { LoggedIn, LoggingIn } = this.props
