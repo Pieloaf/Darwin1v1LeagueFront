@@ -22,6 +22,7 @@ import headhunter from '../data/image/stats/headhunter.png'
 import noheadhunter from '../data/image/stats/noheadhunter.png'
 import grapple from '../data/image/stats/grapple.png'
 import nograpple from '../data/image/stats/nograpple.png'
+import winner from '../data/image/pfp-tags/winner.png'
 
 import { withRouter } from "react-router-dom";
 
