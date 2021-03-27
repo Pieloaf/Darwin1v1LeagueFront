@@ -40,9 +40,17 @@ class Stats extends React.Component {
     }
 
     display_avatar(player) {
-        return <span className="avatar-container">
-            <img className="profile-avatar" src={player.avatar_url} alt="avatar" />
-        </span>
+        if (player[2].achievements.includes('winner') || player[2].achievements.includes('champion')) {
+            return <span style={{ position: 'relative' }} className="avatar-container">
+                <img style={{ zIndex: '1', position: 'absolute', top: 0, right: '15px', width: '36px', height: '36px' }} src={winner} alt="winner" />
+                <img className="profile-avatar" src={player[0].avatar_url} alt="avatar" />
+            </span>
+        }
+        else {
+            return <span style={{ position: 'relative' }} className="avatar-container">
+                <img className="profile-avatar" src={player[0].avatar_url} alt="avatar" />
+            </span>
+        }
     }
     display_username(player) {
         return <span className="user-name">
@@ -121,9 +129,9 @@ class Stats extends React.Component {
         let g = nograpple 
         let h = noheadhunter
         let j = nojetwings
-        if (player.player_classes.includes('grapple')) g = grapple
-        if (player.player_classes.includes('headhunter')) h = headhunter
-        if (player.player_classes.includes('jetwings')) j = jetwings
+        if (player.classes.includes('grapple')) g = grapple
+        if (player.classes.includes('headhunter')) h = headhunter
+        if (player.classes.includes('jetwings')) j = jetwings
         return(
             <span className='classes'>
                 <img className="class" width='80px' height='80px' src={j} alt='grapple'/>
@@ -155,12 +163,12 @@ class Stats extends React.Component {
             </div>
         )
         if (ProfileLoaded === -1) return (<h2>ehhh... something's not right :/</h2>)
-        if (ProfileLoaded && ProfileLoaded.length <= 1) return (<div>{this.userNotFound()}</div>)
-        if (ProfileLoaded && ProfileLoaded.length > 1)
+        if (ProfileLoaded && ProfileLoaded.length <= 2) return (<div>{this.userNotFound()}</div>)
+        if (ProfileLoaded && ProfileLoaded.length > 2)
         return(
             <div className="profile">
                 <div className="profile-card">
-                    {this.display_avatar(ProfileLoaded[0])}
+                    {this.display_avatar(ProfileLoaded)}
                     <div className="basic-info">
                         {this.display_username(ProfileLoaded[0])}
                         <div className="lower-half">
