@@ -1,0 +1,26 @@
+.countdown-Containter {
+    margin-top: 28px;
+    font-family: 'Rift', Fallback, sans-serif !important;
+}
+
+.countdown-Containter h1 {
+    font-size: 28px;
+}
+
+.countdown-Containter h2 {
+    font-size: 26px;
+}
+
+.countdown-Containter h3 {
+    font-size: 32px;
+}
+
+.time-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+.time-item {
+    padding: 0 8px;
+}

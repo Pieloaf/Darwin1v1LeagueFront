@@ -12,10 +12,11 @@
     "react-icons": "^4.1.0",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.3.0",
+    "react-scripts": "^4.0.3",
     "react-table-v6": "^6.8.6",
     "redux": "^4.0.4",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "timezone-support": "^2.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
