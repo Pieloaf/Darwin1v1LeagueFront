@@ -19,7 +19,7 @@ class Games extends React.Component {
         return (<a href={'/profile/' + game.winner_id}>{game.winner}</a>)
     }
     get_elo_change(game, user_id){
-        if (game.num_row <= 10) return 'N/A'
+        if (game.num_row < 1) return 'N/A'
         if (user_id == game.winner_id){
             return ('+'+game.elo_gain)}
         return ('-'+game.elo_loss)
