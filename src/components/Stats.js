@@ -91,7 +91,7 @@ class Stats extends React.Component {
 
     display_elo(player) {
         const rank = this.get_rank_and_color_from_elo(player.elo)
-        if (player.victory + player.defeat >= 10){
+        if (player.victory + player.defeat >= 1){
         return <div className="elo-rank">
                 <div className={"profile-rank-badge " + rank[0]} style={{ backgroundColor: rank[2] }}>
                     {rank[0]}
