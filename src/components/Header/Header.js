@@ -105,15 +105,23 @@ class Header extends React.Component {
                                             <MDBDropdownItem onClick={() => history.push({
                                                 pathname: '/patch-notes/season-1'
                                             })}>
-                                                <Link to='/patch-notes/season-1'>Season 1</Link></MDBDropdownItem>
+                                                <Link to='/patch-notes/season-1'>Season 1</Link>
+                                            </MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
                                                 pathname: '/patch-notes/season-2'
                                             })}>
-                                                <Link to="/patch-notes/season-2">Season 2</Link></MDBDropdownItem>
+                                                <Link to="/patch-notes/season-2">Season 2</Link>
+                                            </MDBDropdownItem>
                                             <MDBDropdownItem onClick={() => history.push({
                                                 pathname: '/patch-notes/season-3'
                                             })}>
-                                                <Link to="/patch-notes/season-3">Season 3</Link></MDBDropdownItem>
+                                                <Link to="/patch-notes/season-3">Season 3</Link>
+                                            </MDBDropdownItem>
+                                            <MDBDropdownItem onClick={() => history.push({
+                                                pathname: '/patch-notes/season-5'
+                                            })}>
+                                                <Link to="/patch-notes/season-5">Season 5</Link>
+                                            </MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
                                 </MDBNavItem>

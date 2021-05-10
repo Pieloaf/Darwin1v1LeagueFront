@@ -5,6 +5,7 @@ import './PatchNotesPage.css'
 import season1 from "../data/image/season1.jpg";
 import season2 from "../data/image/season2.jpg";
 import season3 from "../data/image/season3.jpg";
+import season5 from "../data/image/season5.jpg"
 import { actionGetPatchNotes } from "../actions/PatchNotesActions"
 import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
@@ -25,7 +26,10 @@ class PatchNotesPage extends Component {
             return (season2)
         } else if (this.props.season === 'season-3') {
             return (season3)
+        } else if (this.props.season === 'season-5') {
+            return (season5)
         }
+
     }
 
     displayPatches(json) {

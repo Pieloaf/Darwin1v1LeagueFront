@@ -119,7 +119,7 @@ class LeaderBoardTable extends React.Component {
             return <div>Seems like server is dead lul</div>
         if (!Leaderboard || !Leaderboard.length)
             return <div>Looks like the database has just been cleared</div>
-        const FilteredLeaderboard = Leaderboard.filter(player => (player.victory + player.defeat) >= 10)
+        const FilteredLeaderboard = Leaderboard.filter(player => (player.victory + player.defeat) >= 1)
         if (!FilteredLeaderboard || !FilteredLeaderboard.length)
             return <div>Looks like the leaderboards have just been reset</div>
         return (
