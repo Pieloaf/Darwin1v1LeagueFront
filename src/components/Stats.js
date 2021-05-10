@@ -116,6 +116,13 @@ class Stats extends React.Component {
         }
     }
 
+    get_win_rate(victory, defeat){
+        if (victory+defeat){
+            return(Math.round((victory/(victory + defeat)) * 100, 2)+'%')
+        }
+            return ('N/A')
+    }
+
     display_stat(stat){
         return (
         <span className='stat'>
@@ -185,7 +192,7 @@ class Stats extends React.Component {
                         {this.display_stat({'value':ProfileLoaded[0].victory, 'text':'Victories', 'image':victories})}
                         {this.display_stat({'value':ProfileLoaded[0].defeat, 'text':'Defeats', 'image':defeats})}
                         {this.display_stat({'value':ProfileLoaded[0].victory+ProfileLoaded[0].defeat, 'text':'Total Games', 'image':total_games})}
-                        {this.display_stat({'value':Math.round((ProfileLoaded[0].victory / (ProfileLoaded[0].victory + ProfileLoaded[0].defeat)) * 100, 2)+'%', 'text':'Win Rate', 'image':rank})}
+                        {this.display_stat({'value':this.get_win_rate(ProfileLoaded[0].victory, ProfileLoaded[0].defeat), 'text':'Win Rate', 'image':rank})}
                         {this.display_stat({'value':this.get_rank_text(ProfileLoaded[0], ProfileLoaded[0].q_rank), 'text':'Qualifying Rank', 'image':rank})}
                         {this.display_stat({'value':this.get_rank_text(ProfileLoaded[0], ProfileLoaded[0].g_rank), 'text':'Global Rank', 'image':rank})}
                         {this.display_stat({'value':ProfileLoaded[0].streak, 'text':'Streak', 'image':streak})}
