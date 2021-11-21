@@ -7,7 +7,6 @@ import {
     MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon
 } from "mdbreact";
 import { Link } from 'react-router-dom';
-import '../../data/Fonts/boxicons-2.0.7/css/boxicons.css'
 
 class Header extends React.Component {
 
