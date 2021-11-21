@@ -6,13 +6,16 @@ import { loaders } from './loaders'
 import SimpleTable from "./SimpleTable";
 import { MDBCol, MDBRow } from "mdbreact";
 import './Table.css'
-import gold from '../data/image/medals/1.png'
-import silver from '../data/image/medals/2.png'
-import bronze from '../data/image/medals/3.png'
-import steamLogo from '../data/image/logos/PC.png'
-import XboxLogo from '../data/image/logos/Xbox.png'
-import PS4Logo from '../data/image/logos/PS4.png'
 import { withRouter } from "react-router-dom";
+
+function importImages(r) {
+    let obj = new Object;
+    r.keys().map(r).forEach((img, idx) => obj[r.keys()[idx].match(/\.\/([^;]*)\.(png|jpe?g|svg)$/)[1]] = img)
+    return obj;
+}
+const platform = importImages(require.context('../data/image/logos/platform', false, /\.(png|jpe?g|svg)$/));
+const medals = importImages(require.context('../data/image/medals/', false, /\.(png|jpe?g|svg)$/));
+const pfp = importImages(require.context('../data/image/default-pfp/', false, /\.(png|jpe?g|svg)$/))
 
 
 class LeaderBoardTable extends React.Component {
@@ -30,16 +33,20 @@ class LeaderBoardTable extends React.Component {
     display_medal(player) {
         if (player.ranking > 3)
             return player.ranking
-        const src = player.ranking === 3 ? gold : player.ranking === 2 ? silver : bronze
+        const src = medals[player.ranking].default;
         return <span className="container_medal">
             <img className="player_medal" width="50px" height="50px" src={src} alt="medal" />
             <div className="centered">{player.ranking}</div>
         </span>
     }
 
+    defaultImage(ev) {
+        ev.target.src = pfp[Math.round(Math.random())].default;
+    }
+
     display_avatar(player) {
         return <span className="profile_col">
-            <img className="player_avatar" src={player.avatar_url} alt="avatar" />
+            <img className="player_avatar" onError={this.defaultImage} src={player.avatar_url} alt="avatar" />
             <a href={'/profile/' + player.user_id}>{player.user_name}</a>
         </span>
     }
@@ -67,23 +74,7 @@ class LeaderBoardTable extends React.Component {
     }
 
     get_platform(row) {
-        let src = ''
-        switch (row.platform) {
-            case 'PC':
-                src = steamLogo
-                break;
-            case 'Xbox':
-                src = XboxLogo
-                break;
-            case 'PS4':
-                src = PS4Logo
-                break;
-            default:
-                break;
-        }
-        if (!src)
-            return ''
-        return <img width="50px" height="50px" src={src} alt={row.platform} />
+        return <img width="50px" height="50px" src={platform[row.platform].default} alt={row.platform} />
     }
 
     get_rank_and_color_from_elo(elo) {
