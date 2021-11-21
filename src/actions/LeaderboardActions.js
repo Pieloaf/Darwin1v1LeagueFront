@@ -1,5 +1,5 @@
 import axios from 'axios'
-let API_END_POINT = "https://darwin1v1league.com:100"
+let API_END_POINT = "https://1v1api.pieloaf.com"
 
 export function actionGetLeaderboard(p, r) {
     var url = `${API_END_POINT}/leaderboard/`
