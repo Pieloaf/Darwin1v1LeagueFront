@@ -25,6 +25,12 @@
     overflow-x: scroll;
     padding-bottom: 5px;
 }
+
+.games h1{
+    padding-top: 10px;
+    text-decoration: underline;  
+}
+
 .rows-container{
     overflow-y: scroll;
 }

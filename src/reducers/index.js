@@ -3,7 +3,6 @@ import { LeaderboardReducer, LeaderboardIsLoadingReducer } from './LeaderboardRe
 import { LoggedInReducer, LoggingInReducer } from './LoginReducer';
 import { ProfileLoadedReducer, LoadingProfileReducer } from './ProfileReducer'
 import { PatchesReducer, LoadingPatchesReducer } from './PatchNotesReducer'
-import { GamesLoadedReducer, LoadingGamesReducer } from './ProfileReducer'
 
 const rootReducer = combineReducers({
     Leaderboard: LeaderboardReducer,
@@ -13,9 +12,7 @@ const rootReducer = combineReducers({
     ProfileLoaded: ProfileLoadedReducer,
     LoadingProfile: LoadingProfileReducer,
     Patches: PatchesReducer,
-    LoadingPatches: LoadingPatchesReducer,
-    GamesLoaded: GamesLoadedReducer,
-    LoadingGames: LoadingGamesReducer
+    LoadingPatches: LoadingPatchesReducer
 })
 
 export default rootReducer;

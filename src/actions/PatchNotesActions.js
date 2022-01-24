@@ -21,5 +21,3 @@ export function actionGetPatchNotes(season) {
         })
     }
 }
-
-export default { actionGetPatchNotes }

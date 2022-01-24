@@ -5,7 +5,6 @@ import { MDBMask, MDBView } from 'mdbreact';
 import Header from "../components/Header/Header";
 import './HomePage.css'
 import { FaDiscord } from 'react-icons/fa'
-import Countdown from '../components/Countdown'
 
 const discord_link = "https://discord.gg/DBxYx7PwkS"
 

@@ -24,5 +24,3 @@ export function actionVerifyLogin(code) {
         })
     }
 }
-
-export default { actionVerifyLogin }

@@ -9,7 +9,7 @@ import './Table.css'
 import { withRouter } from "react-router-dom";
 
 function importImages(r) {
-    let obj = new Object;
+    let obj = {};
     r.keys().map(r).forEach((img, idx) => obj[r.keys()[idx].match(/\.\/([^;]*)\.(png|jpe?g|svg)$/)[1]] = img)
     return obj;
 }

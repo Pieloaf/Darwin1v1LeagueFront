@@ -17,23 +17,3 @@ export function LoadingProfileReducer(state = null, action) {
             return state
     }
 }
-
-export function GamesLoadedReducer(state = null, action) {
-
-    switch (action.type) {
-        case 'GAMES_LOADED':
-            return action.payload;
-        default:
-            return state
-    }
-}
-
-export function LoadingGamesReducer(state = null, action) {
-
-    switch (action.type) {
-        case 'LOADING_GAMES':
-            return action.payload;
-        default:
-            return state
-    }
-}

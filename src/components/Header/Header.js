@@ -83,7 +83,7 @@ class Header extends React.Component {
                                             <MDBDropdownItem onClick={() => history.push({
                                                 pathname: '/leaderboard'
                                             })}>
-                                                <Link to="/leaderboard">Global</Link></MDBDropdownItem>
+                                                <Link to="/leaderboard">All</Link></MDBDropdownItem>
                                         </MDBDropdownMenu>
                                     </MDBDropdown>
                                 </MDBNavItem>

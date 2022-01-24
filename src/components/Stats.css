@@ -1,79 +1,3 @@
-
-.profile-card{
-    display: flex;
-    flex-direction: row;
-}
-.avatar-container{
-    display: flex;
-    align-items: center;
-}
-.profile-avatar {
-    margin-right: 15px;
-    border-radius:5px;
-    width:150px;
-    height:150px;
-    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%);
-
-}
-.basic-info{
-    display: flex;
-    align-items: flex-start;
-    flex-direction: column;
-    width: 300px;
-    border-radius: 7px;
-    background-color: #141b3be3;
-    box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%)
-}
-.user-name{
-    font-family: 'Rift';
-    font-size: 26px;
-    width: 100%;    
-    /* background-image:linear-gradient( to right , #FF870D, #FFBC00); */
-    background-image:linear-gradient( to right , #0E173D, #0A4777);
-    text-align: left;
-    padding-left: 10px;
-    border-radius: 7px 7px 0px 0px;
-}
-.lower-half{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-    margin-top: 4px;
-    margin-bottom: 7px;
-}
-.elo-rank {
-    display: flex;
-    font-weight: 400;
-    align-items: center;
-    justify-content:center;
-    width: 100%;
-}
-.profile-rank-badge {
-    font-size: 24px;
-    border-radius: 3px;
-    padding: 0px 8px;
-    color: white;
-}
-.platform-region-container{
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.region-container, .platform-container{
-    display: flex;
-    align-items: center;
-    font-family: 'Rift';
-    font-size: 24px;
-    padding-left: 5px;
-    padding-right: 5px;
-}
-.icon-container{
-    padding-left: 5px;
-}
 .ukelele{
     margin-top: 15px;
     width: 460px;
@@ -85,23 +9,30 @@
     border-radius: 7px;
     box-shadow: 0px 0px 7px 0px rgb(0 0 0 / 50%);
 }
-.stats-title{
+.stats-title {
     font-size: 24px;
     padding: 0px 10px;
     width: 100%;
-    /* background-image:linear-gradient( to right , #0E173D, #0A4777); */
     background-image:linear-gradient( to right , #FF870D, #FFBC00);
     border-radius: 7px 7px 0px 0px;
-    align-items: flex-start;
+    align-items: center;
     display: flex;
 }
+
+.stats-title > select{
+    border: black 3px solid;
+    border-radius: 3px;
+    margin-left: auto;
+}
 .stats{
+    min-height: 378px;
     padding: 10px 0px;
     display: flex;
     width: 100%;
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
 .stat{    
     display: flex;
     flex-direction: column;
@@ -129,6 +60,11 @@
     justify-content: space-evenly;
     background-color: #263e5652;
 }
+
+.unselected{
+    filter: brightness(0.35);
+}
+
 .class-title{
     font-size: 24px;
     width: 100%;
@@ -154,12 +90,5 @@
   and (max-device-width: 500px)  { 
     .ukelele{
         width: 100%;
-    }
-    .basic-info{
-        width: 100%;
-    }
-    .profile-avatar{
-        width: 100px;
-        height: 100px;
     }
   }
